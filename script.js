@@ -180,7 +180,7 @@ function showResult(resultText) {
     resultButton.onclick = () => {
         // Restore the original buttons after the result
         menu.innerHTML = `
-            <button onclick="feedEikon()">Feed</button>
+            <button onclick="battleEikon()">Battle</button>
             <button onclick="playWithEikon()">Play</button>
             <button onclick="cleanEikon()">Clean</button>
         `;
@@ -199,4 +199,103 @@ function cleanEikon() {
 // Function to get a random interval between min and max milliseconds
 function getRandomInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Function to start the battle
+function battleEikon() {
+    // Hide the main menu and show the battle scene
+    document.getElementById('menu').style.display = 'none';
+    document.getElementById('status-bars').style.display = 'none';
+
+    // Set initial positions for player and enemy Eikons
+    const playerEikon = { ...eikon, x: 30, y: canvas.height - 30 - eikon.size };
+    const enemyEikon = { ...eikon, x: canvas.width - 30 - eikon.size, y: 30 };
+    enemyEikon.name = "Normie"; // Set enemy to Normie
+    enemyEikon.health = 100; // Set initial health for enemy
+
+    // Load enemy sprite
+    const enemyData = data.find(eikon => eikon.name === enemyEikon.name);
+    const enemySprite = new Image();
+    enemySprite.src = enemyData.sprite;
+
+    // Initialize speed totals
+    let playerSpeedTotal = 0;
+    let enemySpeedTotal = 0;
+
+    // Start the battle loop
+    const battleInterval = setInterval(() => {
+        // Update speed totals
+        playerSpeedTotal += playerEikon.stats.speed;
+        enemySpeedTotal += enemyData.stats.speed;
+
+        // Check if player can attack
+        if (playerSpeedTotal >= 100) {
+            enemyEikon.health -= playerEikon.stats.attack;
+            playerSpeedTotal -= 100;
+        }
+
+        // Check if enemy can attack
+        if (enemySpeedTotal >= 100) {
+            playerEikon.health -= enemyData.stats.attack;
+            enemySpeedTotal -= 100;
+        }
+
+        // Redraw the battle scene
+        drawBattleScene(playerEikon, enemyEikon, enemySprite);
+
+        // Check for end of battle
+        if (playerEikon.health <= 0 || enemyEikon.health <= 0) {
+            clearInterval(battleInterval);
+            endBattle(playerEikon.health > 0);
+        }
+    }, 100);
+}
+
+// Function to draw the battle scene
+function drawBattleScene(playerEikon, enemyEikon, enemySprite) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw player Eikon
+    ctx.drawImage(
+        eikonSprite,
+        playerEikon.frameIndex * playerEikon.frameWidth, 0, playerEikon.frameWidth, playerEikon.frameHeight,
+        playerEikon.x, playerEikon.y, playerEikon.size, playerEikon.size
+    );
+
+    // Draw enemy Eikon
+    ctx.drawImage(
+        enemySprite,
+        enemyEikon.frameIndex * enemyEikon.frameWidth, 0, enemyEikon.frameWidth, enemyEikon.frameHeight,
+        enemyEikon.x, enemyEikon.y, enemyEikon.size, enemyEikon.size
+    );
+
+    // Draw health bars
+    updateBattleHealthBars(playerEikon.health, enemyEikon.health);
+}
+
+// Function to update health bars during battle
+function updateBattleHealthBars(playerHealth, enemyHealth) {
+    document.getElementById('health-fill').style.width = playerHealth + '%';
+    // Create a new health bar for the enemy
+    const enemyHealthBar = document.getElementById('enemy-health-fill');
+    if (!enemyHealthBar) {
+        const enemyHealthContainer = document.createElement('div');
+        enemyHealthContainer.id = 'enemy-health-bar';
+        enemyHealthContainer.className = 'status-bar';
+        const enemyHealthFill = document.createElement('div');
+        enemyHealthFill.id = 'enemy-health-fill';
+        enemyHealthFill.className = 'status-fill';
+        enemyHealthContainer.appendChild(enemyHealthFill);
+        document.getElementById('game-container').appendChild(enemyHealthContainer);
+    }
+    document.getElementById('enemy-health-fill').style.width = enemyHealth + '%';
+}
+
+// Function to end the battle
+function endBattle(playerWon) {
+    alert(playerWon ? 'You won!' : 'You lost!');
+    // Reset the game state
+    document.getElementById('menu').style.display = 'block';
+    document.getElementById('status-bars').style.display = 'block';
+    document.getElementById('enemy-health-bar').remove();
 }

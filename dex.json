@@ -11,9 +11,8 @@
         "frameInterval": 1000,
         "sprite": "assets/normie.png",
         "stats": {
-            "attack": 10,
-            "defense": 10,
-            "health": 10,
+            "attack": 2,
+            "health": 2,
             "speed": 10
         }
     },
@@ -30,7 +29,6 @@
         "sprite": "assets/blueNormie.png",
         "stats": {
             "attack": 10,
-            "defense": 10,
             "health": 10,
             "speed": 10
         }
@@ -48,7 +46,6 @@
         "sprite": "assets/frog.png",
         "stats": {
             "attack": 20,
-            "defense": 20,
             "health": 20,
             "speed": 20
         }
@@ -66,7 +63,6 @@
         "sprite": "assets/fairee.png",
         "stats": {
             "attack": 20,
-            "defense": 20,
             "health": 20,
             "speed": 20
         }
@@ -84,7 +80,6 @@
         "sprite": "assets/aguato.png",
         "stats": {
             "attack": 20,
-            "defense": 20,
             "health": 20,
             "speed": 20
         }
