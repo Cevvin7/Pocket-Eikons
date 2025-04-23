@@ -1,0 +1,97 @@
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#eikon-canvas {
+    border: 2px solid #000000;
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+#menu {
+    margin-top: 20px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+#menu button:nth-child(1) {
+    background-color: #ff4d4d; /* Red for hunger (Feed button) */
+}
+
+#menu button:nth-child(2) {
+    background-color: #ffd700; /* Yellow for happiness (Play button) */
+}
+
+#menu button:nth-child(3) {
+    background-color: #4d79ff; /* Blue for cleanliness (Clean button) */
+}
+
+#status-bars {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    margin-bottom: 20px;
+}
+
+.status-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33%;
+}
+
+.status-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    border: 1px solid #000;
+    position: relative;
+}
+
+.status-fill {
+    height: 100%;
+    background-color: #76c7c0;
+    width: 100%;
+    transition: width 0.5s;
+}
+
+#health-fill {
+    background-color: #ff4d4d; /* Red for hunger */
+}
+
+#cleanliness-fill {
+    background-color: #4d79ff; /* Blue for cleanliness */
+}
+
+#happiness-fill {
+    background-color: #ffd700; /* Yellow for happiness */
+}
+
+#developer-menu {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#developer-menu label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#developer-menu select {
+    width: 100%;
+    padding: 5px;
+}

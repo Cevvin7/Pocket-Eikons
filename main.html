@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pocket Eikons</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="status-bars">
+            <div class="status-bar-container">
+                <label for="health-bar">Health</label>
+                <div id="health-bar" class="status-bar">
+                    <div id="health-fill" class="status-fill"></div>
+                </div>
+            </div>
+            <div class="status-bar-container">
+                <label for="cleanliness-bar">Cleanliness</label>
+                <div id="cleanliness-bar" class="status-bar">
+                    <div id="cleanliness-fill" class="status-fill"></div>
+                </div>
+            </div>
+            <div class="status-bar-container">
+                <label for="happiness-bar">Happiness</label>
+                <div id="happiness-bar" class="status-bar">
+                    <div id="happiness-fill" class="status-fill"></div>
+                </div>
+            </div>
+        </div>
+        <canvas id="eikon-canvas" width="400" height="400"></canvas>
+        <div id="menu">
+            <button onclick="feedEikon()">Feed</button>
+            <button onclick="playWithEikon()">Play</button>
+            <button onclick="cleanEikon()">Clean</button>
+            <!-- Add more buttons as needed -->
+        </div>
+        <div id="developer-menu">
+            <label for="eikon-select">Choose Eikon:</label>
+            <select id="eikon-select" onchange="selectEikon(this.value)">
+                <!-- Options will be populated dynamically -->
+            </select>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Normie",
+        "requiredEvolutionItems": [],
+        "evolutionLevel": 10,
+        "experienceBase": 1000,
+        "type": "Normal",
+        "frameCount": 2,
+        "frameWidth": 32,
+        "frameHeight": 32,
+        "frameInterval": 1000,
+        "sprite": "assets/normie.png",
+        "stats": {
+            "attack": 10,
+            "defense": 10,
+            "health": 10,
+            "speed": 10
+        }
+    },
+    {
+        "name": "Blue Normie",
+        "requiredEvolutionItems": [],
+        "evolutionLevel": 10,
+        "experienceBase": 1000,
+        "type": "Normal",
+        "frameCount": 2,
+        "frameWidth": 32,
+        "frameHeight": 32,
+        "frameInterval": 1000,
+        "sprite": "assets/blueNormie.png",
+        "stats": {
+            "attack": 10,
+            "defense": 10,
+            "health": 10,
+            "speed": 10
+        }
+    },
+    {
+        "name": "Froggo",
+        "requiredEvolutionItems": ["Item3"],
+        "evolutionLevel": 15,
+        "experienceBase": 1500,
+        "type": "Water",
+        "frameCount": 2,
+        "frameWidth": 32,
+        "frameHeight": 32,
+        "frameInterval": 1000,
+        "sprite": "assets/frog.png",
+        "stats": {
+            "attack": 20,
+            "defense": 20,
+            "health": 20,
+            "speed": 20
+        }
+    },
+    {
+        "name": "Fairee",
+        "requiredEvolutionItems": ["Item3"],
+        "evolutionLevel": 15,
+        "experienceBase": 1500,
+        "type": "Water",
+        "frameCount": 4,
+        "frameWidth": 32,
+        "frameHeight": 32,
+        "frameInterval": 500,
+        "sprite": "assets/fairee.png",
+        "stats": {
+            "attack": 20,
+            "defense": 20,
+            "health": 20,
+            "speed": 20
+        }
+    },
+    {
+        "name": "Aguato",
+        "requiredEvolutionItems": ["Item3"],
+        "evolutionLevel": 15,
+        "experienceBase": 1500,
+        "type": "Water",
+        "frameCount": 4,
+        "frameWidth": 64,
+        "frameHeight": 64,
+        "frameInterval": 500,
+        "sprite": "assets/aguato.png",
+        "stats": {
+            "attack": 20,
+            "defense": 20,
+            "health": 20,
+            "speed": 20
+        }
+    }
+]
