@@ -203,10 +203,25 @@ function getRandomInterval(min, max) {
 
 // Function to start the battle
 function battleEikon() {
-    // Hide the main menu and show the battle scene
+    // Hide other UI elements if necessary
     document.getElementById('menu').style.display = 'none';
-    document.getElementById('status-bars').style.display = 'none';
+    document.getElementById('developer-menu').style.display = 'none';
 
+    // Show player health bar and enemy health bar
+    document.getElementById('health-bar').style.display = 'block';
+    document.getElementById('enemy-health-bar').style.display = 'block';
+
+    // Hide cleanliness and happiness bars and their labels
+    document.querySelector('label[for="cleanliness-bar"]').style.display = 'none';
+    document.getElementById('cleanliness-bar').style.display = 'none';
+    document.querySelector('label[for="happiness-bar"]').style.display = 'none';
+    document.getElementById('happiness-bar').style.display = 'none';
+
+    // Start the battle logic
+    startBattle();
+}
+
+function startBattle() {
     // Set initial positions for player and enemy Eikons
     const playerEikon = { ...eikon, x: 30, y: canvas.height - 30 - eikon.size };
     const enemyEikon = { ...eikon, x: canvas.width - 30 - eikon.size, y: 30 };
@@ -296,6 +311,9 @@ function endBattle(playerWon) {
     alert(playerWon ? 'You won!' : 'You lost!');
     // Reset the game state
     document.getElementById('menu').style.display = 'block';
-    document.getElementById('status-bars').style.display = 'block';
+    document.getElementById('health-bar').style.display = 'none';
+    document.getElementById('enemy-health-bar').style.display = 'none';
+    document.getElementById('cleanliness-bar').style.display = 'block';
+    document.getElementById('happiness-bar').style.display = 'block';
     document.getElementById('enemy-health-bar').remove();
 }
