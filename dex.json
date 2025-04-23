@@ -42,8 +42,8 @@
         "experienceBase": 1500,
         "type": "Water",
         "frameCount": 2,
-        "frameWidth": 32,
-        "frameHeight": 32,
+        "frameWidth": 64,
+        "frameHeight": 64,
         "frameInterval": 1000,
         "sprite": "assets/frog.png",
         "stats": {
@@ -60,8 +60,8 @@
         "experienceBase": 1500,
         "type": "Water",
         "frameCount": 4,
-        "frameWidth": 32,
-        "frameHeight": 32,
+        "frameWidth": 64,
+        "frameHeight": 64,
         "frameInterval": 500,
         "sprite": "assets/fairee.png",
         "stats": {
