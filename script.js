@@ -42,6 +42,9 @@ fetch('dex.json')
 
         // Set initial eikon
         selectEikon(data[0].name);
+
+        // Call startBattle with data
+        startBattle(data);
     })
     .catch(error => console.error('Error loading JSON:', error));
 
@@ -55,6 +58,7 @@ function selectEikon(eikonName) {
             eikon.frameHeight = eikonData.frameHeight;
             eikon.size = eikonData.frameWidth; // Set size to match frameWidth
             eikon.frameIndex = 0; // Reset frame index to 0
+            eikon.health = eikonData.stats.health; // Set health from JSON stats
             eikon.frameInterval = eikonData.frameInterval; // Set frameInterval from JSON
             eikonSprite.src = eikonData.sprite;
             eikonSprite.onload = function() {
@@ -221,15 +225,15 @@ function battleEikon() {
     startBattle();
 }
 
-function startBattle() {
+function startBattle(data) {
     // Set initial positions for player and enemy Eikons
     const playerEikon = { ...eikon, x: 30, y: canvas.height - 30 - eikon.size };
     const enemyEikon = { ...eikon, x: canvas.width - 30 - eikon.size, y: 30 };
     enemyEikon.name = "Normie"; // Set enemy to Normie
-    enemyEikon.health = 100; // Set initial health for enemy
 
-    // Load enemy sprite
+    // Load enemy stats and sprite
     const enemyData = data.find(eikon => eikon.name === enemyEikon.name);
+    enemyEikon.health = enemyData.stats.health; // Set initial health for enemy
     const enemySprite = new Image();
     enemySprite.src = enemyData.sprite;
 
@@ -317,3 +321,4 @@ function endBattle(playerWon) {
     document.getElementById('happiness-bar').style.display = 'block';
     document.getElementById('enemy-health-bar').remove();
 }
+
